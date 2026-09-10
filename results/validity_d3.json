@@ -1,0 +1,176 @@
+{
+  "gate_tol": 1e-06,
+  "n_pairs": 600,
+  "results": [
+    {
+      "judge": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+      "d3a": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 376.94490575790405
+      },
+      "d3b0": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 2206.9298577308655
+      },
+      "signal_sd": 0.2642946873422854,
+      "d3b1_format": {
+        "n": 300,
+        "coverage": 0.5,
+        "format_sd": 0.08008858831349751,
+        "median_abs": 0.0625,
+        "snr_format": 3.3000292914108367,
+        "wall_clock_s": 302.31480836868286
+      },
+      "d3b2_paraphrase": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "paraphrase_sd": 0.044261451004493794,
+        "median_abs": 2.9802322387695312e-08,
+        "snr_paraphrase": 5.971216065995034,
+        "wall_clock_s": 118.6623797416687
+      }
+    },
+    {
+      "judge": "Qwen/Qwen2.5-1.5B-Instruct",
+      "d3a": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 351.6499500274658
+      },
+      "d3b0": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 344.0564835071564
+      },
+      "signal_sd": 0.9759937436397319,
+      "d3b1_format": {
+        "n": 300,
+        "coverage": 0.5,
+        "format_sd": 0.29046657665625386,
+        "median_abs": 0.125,
+        "snr_format": 3.360089669782385,
+        "wall_clock_s": 195.00674605369568
+      },
+      "d3b2_paraphrase": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "paraphrase_sd": 0.1372067195247788,
+        "median_abs": 0.0625,
+        "snr_paraphrase": 7.113308641297794,
+        "wall_clock_s": 115.20164132118225
+      }
+    },
+    {
+      "judge": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "d3a": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 339.44792890548706
+      },
+      "d3b0": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 356.8837127685547
+      },
+      "signal_sd": 0.2561156925859175,
+      "d3b1_format": {
+        "n": 300,
+        "coverage": 0.5,
+        "format_sd": 0.11945702231011213,
+        "median_abs": 0.0546875,
+        "snr_format": 2.143998633425145,
+        "wall_clock_s": 185.3963487148285
+      },
+      "d3b2_paraphrase": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "paraphrase_sd": 0.0409084050202757,
+        "median_abs": 0.03125,
+        "snr_paraphrase": 6.260710786914748,
+        "wall_clock_s": 88.98137044906616
+      }
+    },
+    {
+      "judge": "google/gemma-3-1b-it",
+      "d3a": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 251.21016311645508
+      },
+      "d3b0": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 272.4963479042053
+      },
+      "signal_sd": 2.6850353497320754,
+      "d3b1_format": {
+        "n": 300,
+        "coverage": 0.5,
+        "format_sd": 1.0984699748873819,
+        "median_abs": 0.375,
+        "snr_format": 2.444341139144338,
+        "wall_clock_s": 165.5595941543579
+      },
+      "d3b2_paraphrase": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "paraphrase_sd": 0.5047405581146213,
+        "median_abs": 0.25,
+        "snr_paraphrase": 5.319634625284723,
+        "wall_clock_s": 91.4517297744751
+      }
+    },
+    {
+      "judge": "meta-llama/Llama-3.2-1B-Instruct",
+      "d3a": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 331.6027903556824
+      },
+      "d3b0": {
+        "n": 600,
+        "max_abs": 0.0,
+        "median_abs": 0.0,
+        "passes": true,
+        "wall_clock_s": 341.7286305427551
+      },
+      "signal_sd": 0.41608088753870925,
+      "d3b1_format": {
+        "n": 300,
+        "coverage": 0.5,
+        "format_sd": 0.1934809960553643,
+        "median_abs": 0.125,
+        "snr_format": 2.150500028538453,
+        "wall_clock_s": 172.17646408081055
+      },
+      "d3b2_paraphrase": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "paraphrase_sd": 0.06515831674149866,
+        "median_abs": 0.0625,
+        "snr_paraphrase": 6.385691164942442,
+        "wall_clock_s": 82.17935752868652
+      }
+    }
+  ]
+}

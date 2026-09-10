@@ -1,0 +1,10 @@
+tests/test_templating.py: PASS (Qwen/Qwen2.5-0.5B-Instruct)
+reusing cached prompt split at C:\Users\samue\OneDrive\Documents\Research\ethic_lab\project_exploration\detect_llm_judge\data_cache\prompt_splits.json
+generating 600 remaining prompts, batch_size=64
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  23%|##3       | 67/290 [00:00<00:00, 662.68it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 1555.56it/s]
+C:\Users\samue\OneDrive\Documents\Research\ethic_lab\project_exploration\detect_llm_judge\.venv\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+  pass A done, 778.1s elapsed
+  pass B done, 1436.5s elapsed
+generated 600 new pairs in 1437.4s -> C:\Users\samue\OneDrive\Documents\Research\ethic_lab\project_exploration\detect_llm_judge\data_cache\response_pairs_probe_final.jsonl
+VRAM baseline=5.035GB after_cleanup=4.986GB

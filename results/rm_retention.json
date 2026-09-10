@@ -1,0 +1,43 @@
+{
+ "criterion": "H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001",
+ "n_retained": 1,
+ "n_candidates": 4,
+ "retained_models": [
+  "OA-deberta"
+ ],
+ "rows": [
+  {
+   "model": "OA-deberta",
+   "H1-H5": "PASS",
+   "D1 full": "0.5870 (|d|=0.0870, p=2.13e-03, n=322) FAIL",
+   "D1 large-gap": "0.6906 (|d|=0.1906, p=7.52e-12, n=320) PASS",
+   "retention criterion": "H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001",
+   "retained?": "YES"
+  },
+  {
+   "model": "InternLM2-1.8B",
+   "H1-H5": "PASS",
+   "D1 full": "0.5491 (|d|=0.0491, p=3.15e-02, n=499) FAIL",
+   "D1 large-gap": "0.5980 (|d|=0.0980, p=1.35e-05, n=500) FAIL",
+   "retention criterion": "H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001",
+   "retained?": "NO"
+  },
+  {
+   "model": "gpt2-helpful",
+   "H1-H5": "PASS",
+   "D1 full": "0.5267 (|d|=0.0267, p=2.78e-01, n=450) FAIL",
+   "D1 large-gap": "0.5023 (|d|=0.0023, p=9.62e-01, n=430) FAIL",
+   "retention criterion": "H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001",
+   "retained?": "NO"
+  },
+  {
+   "model": "gpt2-harmless",
+   "H1-H5": "PASS",
+   "D1 full": "0.4800 (|d|=0.0200, p=4.23e-01, n=450) FAIL",
+   "D1 large-gap": "0.4326 (|d|=0.0674, p=5.92e-03, n=430) FAIL",
+   "retention criterion": "H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001",
+   "retained?": "NO"
+  }
+ ],
+ "gate_outcome": "BLOCKED: fewer than two models survive"
+}

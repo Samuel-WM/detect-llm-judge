@@ -1,0 +1,183 @@
+{
+  "run_id": "phase0c_1788806687",
+  "seed": 0,
+  "timestamp": "2026-09-07T18:49:33.353656+00:00",
+  "git_commit": null,
+  "package_versions": {
+    "torch": "2.6.0+cu126",
+    "transformers": "5.16.1",
+    "trl": "1.12.0",
+    "peft": "0.20.0",
+    "datasets": "5.0.1",
+    "accelerate": "1.14.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.1",
+    "tqdm": "4.70.0"
+  },
+  "config": {
+    "phase0c": {
+      "seed": 0,
+      "d": 16,
+      "M": 5,
+      "beta": 1.0,
+      "psi_grid_deg": [
+        90,
+        45,
+        20,
+        10,
+        5,
+        2
+      ],
+      "sigma_grid": [
+        0.0,
+        0.25,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "lambda_grid": [
+        1,
+        4,
+        16
+      ],
+      "N_grid": [
+        50,
+        100,
+        300,
+        600,
+        1200
+      ],
+      "pool_multiplier": 10,
+      "replicates": 200,
+      "primary_map": {
+        "lambda_aniso": 4,
+        "N": 600,
+        "select": "random"
+      },
+      "marginal_a": {
+        "psi_deg": 20,
+        "sigma": 0.5,
+        "lambda_aniso": 4
+      },
+      "marginal_b": {
+        "psi_deg": 20,
+        "sigma": 0.5,
+        "N": 600
+      },
+      "marginal_c": {
+        "psi_deg": 20,
+        "lambda_aniso": 4,
+        "N": 600,
+        "fixed_sigma": 0.5
+      },
+      "representative_cell": {
+        "psi_deg": 20,
+        "sigma": 0.5,
+        "lambda_aniso": 4,
+        "N": 600,
+        "select": "random"
+      },
+      "mixture_identifiability": {
+        "alphas": [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            0.8,
+            0.2
+          ]
+        ],
+        "psi_deg_grid": [
+          45,
+          20
+        ],
+        "sigma": 0.5,
+        "lambda_aniso": 4,
+        "N": 600
+      },
+      "output": {
+        "results_path": "results/phase0c_synthetic.parquet",
+        "run_id_prefix": "phase0c"
+      }
+    }
+  },
+  "extra": {
+    "wall_clock_s": 284.8399169445038,
+    "timings": {
+      "primary_map": 181.41557955741882,
+      "marginal_a": 47.55278182029724,
+      "marginal_b": 18.887691259384155,
+      "marginal_c": 21.197495698928833,
+      "mixture": 3.0482258796691895,
+      "controls": 12.712639331817627
+    },
+    "extras": {
+      "threshold_report": {
+        "sign_agreement": {
+          "tau": 0.0016666666666666496,
+          "f1": 0.49586776859504134,
+          "tpr": 0.9,
+          "fpr": 0.865,
+          "n_positive": 200,
+          "n_negative": 400
+        },
+        "bradley_terry": {
+          "tau": 0.0034075700001742204,
+          "f1": 0.6353383458646616,
+          "tpr": 0.845,
+          "fpr": 0.4075,
+          "n_positive": 200,
+          "n_negative": 400
+        },
+        "nnls_mixture": {
+          "tau": 0.001311778963683791,
+          "f1": 0.5546218487394958,
+          "tpr": 0.99,
+          "fpr": 0.79,
+          "n_positive": 200,
+          "n_negative": 400
+        }
+      },
+      "stat_battery": {
+        "representative_cell": {
+          "psi_deg": 20,
+          "sigma": 0.5,
+          "lambda_aniso": 4,
+          "N": 600,
+          "select": "random"
+        },
+        "identification_test": {
+          "rho_hat": 0.20333333333333334,
+          "p_value": 0.43524487246425686,
+          "n_total": 600,
+          "n_correct": 122,
+          "chance_rate": 0.2
+        },
+        "margin_test": {
+          "n": 600,
+          "shapiro_p": 3.261399877480852e-34,
+          "test_used": "wilcoxon",
+          "p_one_sided": 0.2085385297602823,
+          "p_star_bonferroni": 0.8341541190411292,
+          "margin_mean": 0.015,
+          "margin_median": 0.0
+        },
+        "top_candidate": 4,
+        "runnerup_candidate": 3,
+        "true_judge": 2
+      }
+    },
+    "sections_run": [
+      "marginal_a",
+      "marginal_b",
+      "mixture",
+      "primary",
+      "marginal_c",
+      "controls"
+    ]
+  }
+}

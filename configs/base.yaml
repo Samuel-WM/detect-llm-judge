@@ -1,0 +1,370 @@
+# Shared config for all phases. Fixed values per CLAUDE_CODE_PROMPT.md Section 4.
+# Do not change any value here without flagging it explicitly.
+
+seed: 0
+
+paths:
+  results_dir: results
+  figures_dir: figures
+  logs_dir: logs
+  data_cache_dir: data_cache
+
+models:
+  base_policy: "Qwen/Qwen2.5-0.5B-Instruct"
+  base_policy_secondary: "meta-llama/Llama-3.2-1B-Instruct"  # phase 5 only, if VRAM headroom
+  judge_pool:
+    - "Qwen/Qwen2.5-1.5B-Instruct"
+    - "meta-llama/Llama-3.2-1B-Instruct"
+    - "google/gemma-3-1b-it"
+    - "HuggingFaceTB/SmolLM2-1.7B-Instruct"
+    - "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+
+data:
+  dataset: "HuggingFaceH4/ultrafeedback_binarized"
+  n_train_prompts: 3000
+  n_probe_prompts: 1200
+  generation:
+    temperature: 1.0
+    top_p: 0.95
+    max_new_tokens: 256
+    max_prompt_tokens: 384
+
+dpo:
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  beta: 0.1
+  learning_rate: 5.0e-5
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.05
+  epochs: 2
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  max_length: 640
+  max_prompt_length: 384
+  bf16: true
+  gradient_checkpointing: true
+  ref_model: null  # PEFT adapter toggling; never load a second copy of the weights
+
+hardware:
+  attn_implementation: sdpa
+  dataloader_num_workers: 0
+  torch_compile: false
+  quantization: none  # never quantize a model whose log-probs are read
+
+# Judge margin extraction (Section 4.3). Two templates: template_train labels the alignment
+# data; template_probe is a differently-worded template used at attribution time to simulate
+# an auditor who does not know the pipeline's template. "matched" attribution reuses
+# template_train; "mismatched" uses template_probe.
+judge_templates:
+  template_train: |
+    You are comparing two responses to the same user prompt. Decide which response is better.
+
+    Prompt:
+    {prompt}
+
+    Response A:
+    {response_a}
+
+    Response B:
+    {response_b}
+
+    Which response is better, A or B? Answer with a single letter.
+    Answer:
+  template_probe: |
+    Below is a user request together with two candidate replies. Judge which reply a careful
+    reader would prefer.
+
+    User request:
+    {prompt}
+
+    Candidate A:
+    {response_a}
+
+    Candidate B:
+    {response_b}
+
+    State your preference as exactly one letter, A or B.
+    Preference:
+
+stats:
+  n_replicates_phase0: 200
+  phase0_N_values: [1000, 10000, 100000, 1000000]
+  probe_subsample_sizes: [100, 300, 600, 1200]
+  kill_criterion_pooled_top1_min: 0.60  # at N=1200, mismatched template, all three rules
+
+# Fixed before any Phase 2 run per NEXT_STEPS_TRACKS_A_B_C.md ("Pre-registration, before Phase 2
+# runs"): choosing a rule after seeing Phase 2 accuracy would be a best-of-three selection on the
+# headline number. Decided from Track A's Phase 0c-revision results, not from any Phase 2 data.
+#   identification primary rule: nnls_mixture had the highest top-1 accuracy across the whole
+#     psi x sigma map in the per-rule redraw (A1) -- e.g. 0.685 vs sign_agreement's 0.410 and
+#     bradley_terry's 0.460 at psi=20deg, sigma=0.5.
+#   detection statistic: Lambda (BT likelihood-ratio vs the gamma=0 null) had the highest mean
+#     AUC against pooled negative controls for every rule in A3 (0.867-0.873 vs the raw margin's
+#     0.682-0.826), and won the per-cell AUC comparison most often. Replaces the margin.
+#   mixture recovery: nnls_mixture is the only rule that solves the mixture-attribution problem
+#     at all (sign_agreement/bradley_terry have no notion of a weight vector alpha).
+# All three rules are still reported in every Phase 2 table regardless -- this governs which
+# number is the headline claim, not which numbers get shown.
+pre_registration:
+  identification_primary_rule: nnls_mixture
+  identification_secondary_rule: bradley_terry
+  detection_statistic: Lambda
+  mixture_recovery_rule: nnls_mixture
+
+# Judge-validity retention rules. Written BEFORE D1/D2 are run, per NEXT_STEPS_FINAL.md Step 3
+# ("write it to configs/base.yaml before running D1") and its prohibition against changing the
+# rule after seeing the numbers.
+#
+# D1 measures whether a judge exhibits a systematic preference relation on a benchmark with known
+# chosen/rejected labels. The statistic is DISTANCE FROM CHANCE, not distance from 1.0: a stable
+# anti-correlated judge (e.g. accuracy 0.25) still defines an attributable preference function and
+# passes; a judge at 0.52 is indistinguishable from noise and fails. At N=500 the standard error
+# at p=0.5 is sqrt(0.25/500) = 0.0224, so the fixed 0.10 distance criterion is the binding one.
+judge_validity:
+  d1_external_structure:
+    dataset: "HuggingFaceH4/ultrafeedback_binarized"
+    n_pairs: 500
+    min_abs_distance_from_chance: 0.10
+    binomial_alternative: two-sided
+    binomial_p_threshold: 0.001
+    null_accuracy: 0.5
+  d2_reliability:
+    min_reliability_R: 0.5   # cross-template pearson(d_train, d_probe)
+  hard_gates:
+    d3a_antisymmetry: true   # must pass before any B1/B2 number is interpretable
+    d3b_exact_duplicate_null: true
+  # Formatting/paraphrase SNRs (D3b-1/D3b-2) are DIAGNOSTICS ONLY -- explicitly not exclusion
+  # criteria. A judge with a real preference over style or wording is not thereby invalid.
+  retention_rule: "d1_external_structure passes AND R_m >= 0.5, conditional on both hard gates passing"
+  min_pool_size_before_ladder: 4  # fewer surviving judges triggers the Step 6 pool ladder
+
+# ---------------------------------------------------------------------------------------------
+# Reward-model calibration stage (NEXT_STEPS_ROUND_3_FINAL.md Section C). Written BEFORE any
+# reward-model scoring, per 3.1 and 3.7. Applies to the reward-model class only -- the existing
+# five-LLM-judge Step 4 verdict remains 0/5 and is NOT revisited.
+reward_model_stage:
+  # Pool membership is PENDING: the pre-download compatibility check (3.5) hard-blocked
+  # OpenAssistant/reward-model-deberta-v3-large-v2 on context length (512 < 640 required). Per
+  # Section 3's decision rule, revisiting the pool requires explicit instruction, so no
+  # replacement has been selected and nothing has been downloaded.
+  pool_status: "PENDING_REVIEW - 1 of 4 blocked on context length, awaiting instruction"
+  pool_proposed:
+    - OpenAssistant/reward-model-deberta-v3-large-v2   # BLOCKED: max_position_embeddings=512 < 640
+    - internlm/internlm2-1_8b-reward                    # passes precheck
+    - Ray2333/gpt2-large-helpful-reward_model           # passes precheck
+    - Ray2333/gpt2-large-harmless-reward_model          # passes precheck
+
+  provenance:
+    composition: >
+      heterogeneous reward-model training mixtures with partial corpus overlap
+      (three of four include Anthropic/hh-rlhf). No independence claim is made.
+    hard_cell: >
+      Ray2333 helpful / harmless pair - same corpus (Anthropic/hh-rlhf), opposed preference
+      axis. Pre-designated as the hard separation cell before any scoring.
+    confound: >
+      dataset overlap recorded per model and analyzed alongside separation; see figure F11.
+
+  # Evaluator measurement reliability is structurally 1 for a deterministic scalar reward head
+  # once H1-H4 pass (3.4). Whitespace/paraphrase robustness is a property of the learned reward
+  # FUNCTION, not noise in observing it, and must never be fed into a = sqrt(R).
+  evaluator_reliability_R: 1.0
+
+  # D1 pre-registration for the reward-model round (3.7). Primary is the large-gap subset;
+  # secondary is the full held-out set. Statistic remains distance from chance, so a
+  # below-chance-but-stable model can still pass.
+  d1_pre_registration:
+    primary: large_gap_subset          # score_chosen - score_rejected >= 3
+    secondary: full_held_out_set
+    min_abs_distance_from_chance: 0.10
+    binomial_alternative: two-sided
+    binomial_p_threshold: 0.001
+    null_accuracy: 0.5
+    note: "below-chance results satisfying the distance rule are NOT reinterpreted as failure"
+    # ROUND 5 (§1.1): superseded as the CALIBRATION-STAGE inclusion gate, not deleted and not
+    # recomputed. Every Round 4 D1 value stands exactly as measured and is carried forward as a
+    # reported covariate. This rule may become a gate again at a later stage involving real LLM
+    # judges, where external preference validity is part of the construct.
+    superseded_for_calibration_stage: true
+    round4_measured_values_remain_authoritative: true
+
+  # Retention for this stage (3.8) -- deliberately NOT the LLM-template reliability gate.
+  retention_rule: "H1-H4 hard scorer gates pass AND D1 primary rule passes AND D3b SNR criterion passes"
+
+  # Reward-model output scales are arbitrary; NNLS mixture coefficients are not scale-invariant.
+  mixture_standardization: "d_std_m = d_m / sd_probe(d_m), constants recorded in the run manifest"
+
+  chance_rate_note: "four-way classification has chance 1/M = 0.25 (three-way would be 0.333)"
+
+  # ------------------------------------------------------------------------------------------
+  # ROUND 5 §2: calibration-stage candidate retention (C1-C5).
+  #
+  # DISCLOSURE (§1.2): this rule was defined AFTER the Round 4 D1 results were observed. It is
+  # NOT pre-registered relative to Round 4, and the Round 4 calibration data must never be cited
+  # as confirmatory evidence that this rule is valid. Its defense is conceptual and procedural:
+  #   1. it measures the properties the calibration task actually requires, directly;
+  #   2. it ADDS cross-process reproducibility (C1) and length-dominance (C4) checks that the
+  #      old rule did not have;
+  #   3. every Round 4 D1 value remains unchanged and visible as a covariate;
+  #   4. it is frozen before any new attribution outcome is observed;
+  #   5. final attribution is evaluated on a fresh disjoint probe set that plays no part in
+  #      constructing the pool.
+  # ------------------------------------------------------------------------------------------
+  calibration_retention:
+    status: "post-Round-4, pre-attribution protocol correction; frozen before any Round 5 outcome"
+    supersedes: "d1_pre_registration, as the calibration-stage inclusion gate only"
+    d1_role: "reported covariate, not a gate at this stage"
+
+    construct_mapping:
+      reward_structure: "H1 non-degeneracy"
+      reproducibility: "within-process AND cross-process bitwise determinism"
+      scoring_correctness: "H3 / H4 / H5"
+      length_dominance: "R^2 of reward margin on len_diff"
+      candidate_separation: "empirical psi_eff on the fixed 487-probe calibration distribution"
+
+    model_wise:
+      C1:
+        name: "deterministic reward function"
+        within_process: "bitwise deterministic"
+        cross_process: "bitwise reproducible across two fresh processes on identical inputs"
+        note: "bitwise equality is the criterion; an approximate correlation threshold may NOT be
+               substituted after seeing the result"
+      C2:
+        name: "non-degenerate margins"
+        rule: "H1 passes under its EXISTING criterion; margin sd finite and non-trivial under the
+               existing H1 implementation"
+        note: "no new numeric sd threshold may be invented post hoc"
+      C3:
+        name: "harness correctness"
+        rule: "H3 batch-invariance AND H4 margin-identity AND H5 input-reaches-model all pass"
+      C4:
+        name: "not length-dominated"
+        model: "d_m = c_m + gamma_m * len_diff + epsilon_m, fitted on the 487 calibration probes"
+        rule: "R_squared_len_m < 0.50"
+        semantics: "excluded only if a single linear length feature explains at least half of the
+                    reward-margin variance"
+        report: ["gamma_m", "se_gamma_m", "R_squared_len_m", "pass"]
+
+    pool_level:
+      C5:
+        name: "pool separation"
+        rule: "min pairwise RAW psi_eff over the C1-C4-passing set S >= 45 degrees"
+        threshold_basis: "the synthetic transition region observed in Track E; fixed before any
+                          new attribution outcome"
+        applied_after: "C1-C4 model-wise; S is formed first and C5 is evaluated on S as a whole"
+        on_failure: "STOP and report. Do NOT drop the candidate forming the closest pair and do
+                     NOT search subsets for a more favourable geometry."
+      residualized_geometry:
+        role: "reported diagnostic only; NOT an additional C5 exclusion gate"
+        interpretation: "if raw C5 passes but residualized separation collapses, continue while
+                         explicitly labelling any successful raw attribution as potentially
+                         length-mediated"
+
+    internlm2_disposition:
+      verdict: "C1 FAIL (cross-process)"
+      evidence: "between-process Pearson ~0.84; median cross-process disagreement ~24.5% of its
+                 margin sd; independently reproduced on a fresh 60-input run"
+      prohibitions: "no rescue via precision, kernel, or threshold changes in this round; bf16
+                     reduction-ordering and kernel-selection explanations are UNTESTED HYPOTHESES
+                     only; no reinstatement without a passing C1 under a pre-specified protocol"
+
+    length_convention: "len_diff = len(tok_base(response_a)) - len(tok_base(response_b)) in
+                        base-policy tokens, matching the standing project convention"
+
+# ------------------------------------------------------------------------------------------
+# ROUND 5 GATE 3: frozen pre-registration. Written after sections 2-4 were frozen and
+# BEFORE the first DPO run. Do not change any field after seeing an attribution outcome.
+# ------------------------------------------------------------------------------------------
+attribution_stage:
+  pre_registration_round5:
+    status: FROZEN before the first DPO run; no field may change after any attribution outcome is observed
+    candidates:
+    - OA-deberta
+    - gpt2-helpful
+    - gpt2-harmless
+    M: 3
+    chance: 0.3333333333333333
+    pool_determined_by: C1-C4 model-wise plus pool-level C5, in reward_model_stage.calibration_retention
+    min_raw_pairwise_psi_eff_deg: 67.29325068555858
+    min_residualized_pairwise_psi_eff_deg: 69.65467248091701
+    primary_identification_rule: nnls_mixture
+    secondary_identification_rule: bradley_terry
+    additional_reported_rule: sign_agreement
+    detection_statistic: Lambda
+    lambda_detection_threshold: 12.873131695619026
+    lambda_threshold_basis: chi2(1) upper quantile at p < 0.001 Bonferroni-corrected across M = 3 candidates;
+      conservative for a boundary-constrained gamma, whose exact null is a 50:50 chi2(0)/chi2(1) mixture
+    primary_evaluation_data: fresh final attribution holdout (section 4); NEVER the 487 calibration probes
+    final_holdout_manifest_sha256: f1a63fbde3d51b0c0e57e1fd981469d289b91853b5ea9625df3230dfe9821027
+    N_final: 512
+    training_manifest_sha256: 13b162d33744e05415e92e7bfc857e6cd3f2817f80b91356cce6fab197a48d66
+    N_train: 259
+    evaluation_checkpoint: final checkpoint; full trajectory reported; no checkpoint may be selected on
+      final-holdout performance
+    epochs: 16
+    n_checkpoints: 16
+    label_process: stochastic Bradley-Terry, tau = 2.0, standardized on training pairs only
+    label_seed: 20250909
+    ctrl_seed: 20250910
+    ctrl_construction: permutation of the gpt2-helpful label vector; preserves the positive/negative count
+      exactly
+    primary_per_run_statistic: S = alpha_true - max_{m != true} alpha_m, on the UNNORMALIZED nonnegative
+      NNLS coefficients
+    s_statistic_deviation_from_6_4:
+      declared: before any DPO run and before any attribution outcome existed
+      spec_text: 6.4 defines S on the normalized mixture weight vector
+      reason: 'measured on synthetic data with this pool''s correlation structure, the normalized statistic
+        is degenerate under the permutation null: permuted-Delta NNLS weights are tiny and noisy, so dividing
+        by their sum drives the vector to a simplex vertex. The null becomes bimodal at +/-1 with 99.9th
+        percentile exactly +1.0000, while S_obs <= 1 by construction, so p_perm cannot fall below about
+        0.10 and the pre-registered p < 0.001 criterion is unsatisfiable.'
+      effect: top-1 identification is UNCHANGED (normalization is division by a positive scalar); only
+        the magnitude statistic changes. Normalized weights are still reported for 6.3 and F19, and S
+        on normalized weights is reported alongside.
+    primary_per_run_test: 10000-permutation one-sided randomization test, probe-labels permuted, candidate
+      margin matrix held fixed, entire NNLS fit rerun
+    permutation_seed: 20250911
+    p_threshold: 0.001
+    primary_per_run_success: true candidate top-1 AND S > 0 AND p_perm < 0.001
+    bootstrap:
+      n: 5000
+      seed: 20250912
+      reports:
+      - top1_support
+      - s_boot_median
+      - s_boot_ci95
+      role: stability/uncertainty analysis, NOT the p-value
+    per_probe_winrate: reported with exact binomial CI, descriptive only; never the inferential basis
+      for the dataset-level NNLS claim
+    margin_standardization: frozen 487-probe calibration mean/sd (4.5); candidates are NEVER standardized
+      using final attribution outcomes
+    residualization: frozen calibration length coefficients (c_m, gamma_m) applied out of sample; residuals
+      standardized with calibration residual mean/sd
+    aggregate_claim: every retained real reward-model arm is correctly attributed under the primary rule
+      at the final checkpoint
+    negative_control: one required shuffled-label CTRL run; no candidate may clear the pre-registered
+      Lambda threshold. No claim that a single CTRL run's top-1 frequency is 'at chance'.
+    kill_criterion:
+      required_successes: 2
+      formula: max(2, ceil(2*M/3))
+      on_fire: rank transmission is insufficient at this scale; report and stop before the deterministic
+        realism arm
+    length_robustness: raw attribution is primary; residualized attribution is required secondary robustness;
+      residualized success cannot rescue raw failure
+    deterministic_realism_arm:
+      trigger: ALL retained stochastic real-RM arms satisfy the primary per-run success criterion AND
+        the CTRL detection condition passes
+      teacher: gpt2-helpful
+      teacher_rule: frozen in 9 before any DPO result was observed
+      label: 1[d_m_train > 0], deterministic tie handling fixed before training
+    sigma_D_convergence_rule:
+      range_pearson_last4: 0.03
+      range_r_squared_last4: 0.02
+      abs_final_minus_mean_pearson: 0.015
+      abs_final_minus_mean_r_squared: 0.01
+      on_failure: report sigma_D_ratio(t) as a trajectory; do not place a single measured sigma_D point
+        on Track E; use a final-four sensitivity band
+    prohibited: sigma_D = 5.35 is struck and is not an input, bound, estimate, or comparison target anywhere
+      in this round

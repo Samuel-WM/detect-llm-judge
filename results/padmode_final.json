@@ -1,0 +1,22 @@
+{
+  "fixed_bin_corpus_independence": {
+    "max_abs": 0.0,
+    "median_abs": 0.0
+  },
+  "legacy_corpus_independence": {
+    "max_abs": 0.18750008940696716,
+    "median_abs": 0.0625
+  },
+  "fixed_bin_vs_padfree": {
+    "max_abs": 0.25,
+    "median_abs": 0.06250002980232239,
+    "signal_sd": 1.1253345077422197,
+    "median_as_frac_of_signal_sd": 0.055539068048057465
+  },
+  "legacy_vs_padfree": {
+    "max_abs": 0.25,
+    "median_abs": 0.03125,
+    "signal_sd": 1.1253345077422197,
+    "median_as_frac_of_signal_sd": 0.027769520782489357
+  }
+}

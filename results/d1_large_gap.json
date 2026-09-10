@@ -1,0 +1,61 @@
+{
+  "gap_threshold": 3.0,
+  "n_pairs": 500,
+  "results": [
+    {
+      "judge": "Qwen/Qwen2.5-1.5B-Instruct",
+      "n": 500,
+      "n_correct": 310,
+      "large_gap_accuracy": 0.62,
+      "large_gap_abs_distance": 0.12,
+      "large_gap_binomial_p": 8.962859009916443e-08,
+      "full_set_accuracy": 0.536,
+      "full_set_abs_distance": 0.03600000000000003,
+      "wall_clock_s": 263.1395170688629
+    },
+    {
+      "judge": "meta-llama/Llama-3.2-1B-Instruct",
+      "n": 500,
+      "n_correct": 162,
+      "large_gap_accuracy": 0.324,
+      "large_gap_abs_distance": 0.176,
+      "large_gap_binomial_p": 2.604487239019693e-15,
+      "full_set_accuracy": 0.426,
+      "full_set_abs_distance": 0.07400000000000001,
+      "wall_clock_s": 194.9950304031372
+    },
+    {
+      "judge": "google/gemma-3-1b-it",
+      "n": 500,
+      "n_correct": 293,
+      "large_gap_accuracy": 0.586,
+      "large_gap_abs_distance": 0.08599999999999997,
+      "large_gap_binomial_p": 0.0001390078918532487,
+      "full_set_accuracy": 0.536,
+      "full_set_abs_distance": 0.03600000000000003,
+      "wall_clock_s": 180.19999718666077
+    },
+    {
+      "judge": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+      "n": 500,
+      "n_correct": 289,
+      "large_gap_accuracy": 0.578,
+      "large_gap_abs_distance": 0.07799999999999996,
+      "large_gap_binomial_p": 0.0005609396419073087,
+      "full_set_accuracy": 0.52,
+      "full_set_abs_distance": 0.020000000000000018,
+      "wall_clock_s": 364.26612758636475
+    },
+    {
+      "judge": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "n": 500,
+      "n_correct": 254,
+      "large_gap_accuracy": 0.508,
+      "large_gap_abs_distance": 0.008000000000000007,
+      "large_gap_binomial_p": 0.7542789113554095,
+      "full_set_accuracy": 0.496,
+      "full_set_abs_distance": 0.0040000000000000036,
+      "wall_clock_s": 2914.1921937465668
+    }
+  ]
+}

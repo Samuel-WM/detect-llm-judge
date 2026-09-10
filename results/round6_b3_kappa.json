@@ -1,0 +1,43 @@
+{
+ "kappa_R6": 0.0988627220963088,
+ "rule": "last checkpoint whose training-side KL_bar <= kappa_R6",
+ "derivation": "median of training-side KL_bar at the three Round 5 peak-raw-S checkpoints; Round 5 holdout S used ONCE, retrospectively, to locate those checkpoints -- this is a development-set procedure and is not holdout-free",
+ "peak_table": [
+  {
+   "arm": "RM_OA-deberta",
+   "peak_S_step": 68,
+   "peak_S": 1.03462196975959,
+   "KL_bar_at_peak": 0.0988627220963088
+  },
+  {
+   "arm": "RM_gpt2-helpful",
+   "peak_S_step": 51,
+   "peak_S": 1.4552508121678476,
+   "KL_bar_at_peak": 0.0649051943295438
+  },
+  {
+   "arm": "RM_gpt2-harmless",
+   "peak_S_step": 238,
+   "peak_S": 3.3051620655443865,
+   "KL_bar_at_peak": 0.2174367531084678
+  }
+ ],
+ "round5_selection": [
+  {
+   "arm": "RM_OA-deberta",
+   "kappa_selected_step": 68,
+   "KL_bar_there": 0.0988627220963088
+  },
+  {
+   "arm": "RM_gpt2-helpful",
+   "kappa_selected_step": 51,
+   "KL_bar_there": 0.0649051943295438
+  },
+  {
+   "arm": "RM_gpt2-harmless",
+   "kappa_selected_step": 68,
+   "KL_bar_there": 0.0905406230861992
+  }
+ ],
+ "frozen_before": "any Tier 1+ Round 6 arm trains"
+}

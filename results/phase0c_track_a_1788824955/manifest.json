@@ -1,0 +1,121 @@
+{
+  "run_id": "phase0c_track_a_1788824955",
+  "seed": 0,
+  "timestamp": "2026-09-07T23:49:15.591212+00:00",
+  "git_commit": null,
+  "package_versions": {
+    "torch": "2.6.0+cu126",
+    "transformers": "5.16.1",
+    "trl": "1.12.0",
+    "peft": "0.20.0",
+    "datasets": "5.0.1",
+    "accelerate": "1.14.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.1",
+    "tqdm": "4.70.0"
+  },
+  "config": {
+    "phase0c": {
+      "seed": 0,
+      "d": 16,
+      "M": 5,
+      "beta": 1.0,
+      "psi_grid_deg": [
+        90,
+        45,
+        20,
+        10,
+        5,
+        2
+      ],
+      "sigma_grid": [
+        0.0,
+        0.25,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "lambda_grid": [
+        1,
+        4,
+        16
+      ],
+      "N_grid": [
+        50,
+        100,
+        300,
+        600,
+        1200
+      ],
+      "pool_multiplier": 10,
+      "replicates": 200,
+      "primary_map": {
+        "lambda_aniso": 4,
+        "N": 600,
+        "select": "random"
+      },
+      "marginal_a": {
+        "psi_deg": 20,
+        "sigma": 0.5,
+        "lambda_aniso": 4
+      },
+      "marginal_b": {
+        "psi_deg": 20,
+        "sigma": 0.5,
+        "N": 600
+      },
+      "marginal_c": {
+        "psi_deg": 20,
+        "lambda_aniso": 4,
+        "N": 600,
+        "fixed_sigma": 0.5
+      },
+      "representative_cell": {
+        "psi_deg": 20,
+        "sigma": 0.5,
+        "lambda_aniso": 4,
+        "N": 600,
+        "select": "random"
+      },
+      "mixture_identifiability": {
+        "alphas": [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            0.8,
+            0.2
+          ]
+        ],
+        "psi_deg_grid": [
+          45,
+          20
+        ],
+        "sigma": 0.5,
+        "lambda_aniso": 4,
+        "N": 600
+      },
+      "output": {
+        "results_path": "results/phase0c_synthetic.parquet",
+        "run_id_prefix": "phase0c"
+      }
+    }
+  },
+  "extra": {
+    "wall_clock_s": 1120.7356522083282,
+    "timings": {
+      "a2a3_detection_grid": 994.6221888065338,
+      "a4_marginal_a": 109.97229719161987,
+      "a5_conditioning": 15.98678469657898
+    },
+    "sections_run": [
+      "a5",
+      "a4",
+      "a2a3"
+    ]
+  }
+}

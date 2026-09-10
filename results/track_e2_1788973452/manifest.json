@@ -1,0 +1,131 @@
+{
+  "run_id": "track_e2_1788973452",
+  "seed": 0,
+  "timestamp": "2026-09-09T17:04:12.722250+00:00",
+  "git_commit": null,
+  "package_versions": {
+    "torch": "2.6.0+cu126",
+    "transformers": "5.16.1",
+    "trl": "1.12.0",
+    "peft": "0.20.0",
+    "datasets": "5.0.1",
+    "accelerate": "1.14.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.1",
+    "tqdm": "4.70.0"
+  },
+  "config": {
+    "psi": [
+      90,
+      45,
+      20,
+      10,
+      5,
+      2
+    ],
+    "R": [
+      1.0,
+      0.9,
+      0.7,
+      0.573,
+      0.5,
+      0.478,
+      0.3,
+      0.15
+    ],
+    "c": [
+      0.0,
+      0.0489,
+      0.25,
+      0.5
+    ],
+    "sigma_D": [
+      0.0,
+      0.5,
+      1.0,
+      5.3485
+    ],
+    "measured_R": {
+      "Qwen2.5-1.5B": 0.573,
+      "gemma-3-1b": 0.478,
+      "SmolLM2-1.7B": 0.219,
+      "TinyLlama-1.1B": 0.216,
+      "Llama-3.2-1B": 0.152
+    },
+    "reps": 200,
+    "a_parameterization": "a = sqrt(R)"
+  },
+  "extra": {
+    "wall_clock_s": 1684.7017550468445,
+    "gates": {
+      "calibration": [
+        {
+          "R_target": 1.0,
+          "R_realized": 1.0,
+          "se": 0.0,
+          "abs_error": 0.0,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.9,
+          "R_realized": 0.9000371513271466,
+          "se": 0.0004801716458247982,
+          "abs_error": 3.715132714654512e-05,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.7,
+          "R_realized": 0.7015681703168375,
+          "se": 0.0012618645383414531,
+          "abs_error": 0.001568170316837536,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.573,
+          "R_realized": 0.5748907697419002,
+          "se": 0.0019486866503888737,
+          "abs_error": 0.0018907697419002778,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.5,
+          "R_realized": 0.503686362014723,
+          "se": 0.0021763500853768424,
+          "abs_error": 0.0036863620147230547,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.478,
+          "R_realized": 0.4814013997697095,
+          "se": 0.0023363440525504525,
+          "abs_error": 0.0034013997697095455,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.3,
+          "R_realized": 0.29714082161055666,
+          "se": 0.0028445161667820765,
+          "abs_error": 0.0028591783894433287,
+          "within_mc_error": true
+        },
+        {
+          "R_target": 0.15,
+          "R_realized": 0.15982937056659782,
+          "se": 0.0031491794348990523,
+          "abs_error": 0.009829370566597828,
+          "within_mc_error": true
+        }
+      ],
+      "calibration_pass": true,
+      "regression_gate_pass": true,
+      "regression_acc": {
+        "bradley_terry": 1.0,
+        "nnls_mixture": 1.0,
+        "sign_agreement": 1.0
+      }
+    }
+  }
+}

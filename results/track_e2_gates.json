@@ -1,0 +1,67 @@
+{
+  "calibration": [
+    {
+      "R_target": 1.0,
+      "R_realized": 1.0,
+      "se": 0.0,
+      "abs_error": 0.0,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.9,
+      "R_realized": 0.9000371513271466,
+      "se": 0.0004801716458247982,
+      "abs_error": 3.715132714654512e-05,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.7,
+      "R_realized": 0.7015681703168375,
+      "se": 0.0012618645383414531,
+      "abs_error": 0.001568170316837536,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.573,
+      "R_realized": 0.5748907697419002,
+      "se": 0.0019486866503888737,
+      "abs_error": 0.0018907697419002778,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.5,
+      "R_realized": 0.503686362014723,
+      "se": 0.0021763500853768424,
+      "abs_error": 0.0036863620147230547,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.478,
+      "R_realized": 0.4814013997697095,
+      "se": 0.0023363440525504525,
+      "abs_error": 0.0034013997697095455,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.3,
+      "R_realized": 0.29714082161055666,
+      "se": 0.0028445161667820765,
+      "abs_error": 0.0028591783894433287,
+      "within_mc_error": true
+    },
+    {
+      "R_target": 0.15,
+      "R_realized": 0.15982937056659782,
+      "se": 0.0031491794348990523,
+      "abs_error": 0.009829370566597828,
+      "within_mc_error": true
+    }
+  ],
+  "calibration_pass": true,
+  "regression_gate_pass": true,
+  "regression_acc": {
+    "bradley_terry": 1.0,
+    "nnls_mixture": 1.0,
+    "sign_agreement": 1.0
+  }
+}

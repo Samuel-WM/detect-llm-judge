@@ -1,0 +1,5 @@
+model,D1_large_gap_acc,lg_|d|,lg_p,lg_n,lg_pass,D1_full_acc,full_|d|,full_p,full_n,full_pass,expectation
+OA-deberta,0.6906,0.1906,7.52e-12,320,True,0.587,0.087,2.13e-03,322,False,expected positive structure
+InternLM2-1.8B,0.598,0.098,1.35e-05,500,False,0.5491,0.0491,3.15e-02,499,False,unknown
+gpt2-helpful,0.5023,0.0023,9.62e-01,430,False,0.5267,0.0267,2.78e-01,450,False,expected positive structure
+gpt2-harmless,0.4326,0.0674,5.92e-03,430,False,0.48,0.02,4.23e-01,450,False,direction unknown on generic helpfulness labels

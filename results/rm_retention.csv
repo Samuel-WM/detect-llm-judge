@@ -1,0 +1,5 @@
+model,H1-H5,D1 full,D1 large-gap,retention criterion,retained?
+OA-deberta,PASS,"0.5870 (|d|=0.0870, p=2.13e-03, n=322) FAIL","0.6906 (|d|=0.1906, p=7.52e-12, n=320) PASS",H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001,YES
+InternLM2-1.8B,PASS,"0.5491 (|d|=0.0491, p=3.15e-02, n=499) FAIL","0.5980 (|d|=0.0980, p=1.35e-05, n=500) FAIL",H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001,NO
+gpt2-helpful,PASS,"0.5267 (|d|=0.0267, p=2.78e-01, n=450) FAIL","0.5023 (|d|=0.0023, p=9.62e-01, n=430) FAIL",H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001,NO
+gpt2-harmless,PASS,"0.4800 (|d|=0.0200, p=4.23e-01, n=450) FAIL","0.4326 (|d|=0.0674, p=5.92e-03, n=430) FAIL",H1-H5 all pass AND D1 PRIMARY (large-gap): |acc-0.5| >= 0.1 AND p < 0.001,NO

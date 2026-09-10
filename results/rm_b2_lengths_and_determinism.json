@@ -1,0 +1,61 @@
+{
+ "b2_lengths_internlm": {
+  "n_retained": 487,
+  "serialization": "apply_chat_template(user=prompt, assistant=response) + special-id remap + appended <|reward|> token; length = len(actual input_ids)",
+  "preliminary_estimate": "plain '{prompt}\n\n{response}' SentencePiece encode",
+  "realized": {
+   "max": 596,
+   "p99": 565.0,
+   "median": 362.0,
+   "min": 40,
+   "mean": 349.26078028747435
+  },
+  "preliminary": {
+   "max": 499,
+   "median": 292.0
+  },
+  "realized_minus_estimate": {
+   "max": 155,
+   "median": 65.0,
+   "min": -325
+  },
+  "model_context": 2048,
+  "filter_cap_used": 500,
+  "n_retained_exceeding_filter_cap": 28,
+  "n_retained_exceeding_model_context": 0,
+  "max_headroom_used_frac": 0.291015625,
+  "any_truncation_occurred": false
+ },
+ "cross_process_determinism": {
+  "InternLM2-1.8B": {
+   "n": 487,
+   "frac_bitwise_equal": 0.06981519507186858,
+   "max_abs_diff": 1.13134765625,
+   "median_abs_diff": 0.1015625,
+   "sd_of_margin": 0.415384377827449,
+   "median_abs_diff_as_frac_of_sd": 0.24450245464500625,
+   "pearson_between_processes": 0.839624477518891,
+   "reproducible_across_processes": false
+  },
+  "gpt2-helpful": {
+   "n": 487,
+   "frac_bitwise_equal": 1.0,
+   "max_abs_diff": 0.0,
+   "median_abs_diff": 0.0,
+   "sd_of_margin": 1.342926798197686,
+   "median_abs_diff_as_frac_of_sd": 0.0,
+   "pearson_between_processes": 1.0,
+   "reproducible_across_processes": true
+  },
+  "gpt2-harmless": {
+   "n": 487,
+   "frac_bitwise_equal": 1.0,
+   "max_abs_diff": 0.0,
+   "median_abs_diff": 0.0,
+   "sd_of_margin": 1.1405335623365482,
+   "median_abs_diff_as_frac_of_sd": 0.0,
+   "pearson_between_processes": 1.0,
+   "reproducible_across_processes": true
+  }
+ }
+}

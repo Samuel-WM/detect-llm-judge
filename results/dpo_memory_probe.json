@@ -1,0 +1,42 @@
+{
+  "cap_fraction": 0.9,
+  "card_total_gb": 5.99951171875,
+  "results": [
+    {
+      "config": "precompute_ref (current)",
+      "status": "ok",
+      "error": null,
+      "wall_s": 96.2,
+      "sec_per_step": 48.1,
+      "peak_alloc_gb": 3.021,
+      "peak_reserved_gb": 5.199
+    },
+    {
+      "config": "precompute_ref + empty_cache",
+      "status": "ok",
+      "error": null,
+      "wall_s": 89.8,
+      "sec_per_step": 44.9,
+      "peak_alloc_gb": 3.023,
+      "peak_reserved_gb": 4.484
+    },
+    {
+      "config": "precompute_ref + act_offload",
+      "status": "ok",
+      "error": null,
+      "wall_s": 100.8,
+      "sec_per_step": 50.4,
+      "peak_alloc_gb": 3.336,
+      "peak_reserved_gb": 5.225
+    },
+    {
+      "config": "no precompute (baseline)",
+      "status": "ok",
+      "error": null,
+      "wall_s": 112.0,
+      "sec_per_step": 56.0,
+      "peak_alloc_gb": 3.239,
+      "peak_reserved_gb": 5.242
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "ceiling": 1.5707963267948966,
+  "saturation_frac_threshold": 0.9,
+  "levels": [
+    {
+      "delta_f": 1.0,
+      "kappa_median": 3.4885738308,
+      "kappa_q1": 3.453732093,
+      "kappa_q3": 3.5387546345,
+      "theta_median": 0.1223175886,
+      "theta_q1": 0.1052547225,
+      "theta_q3": 0.1409259216,
+      "n": 200,
+      "frac_of_ceiling": 0.0778697954,
+      "saturated": false
+    },
+    {
+      "delta_f": 0.1,
+      "kappa_median": 5.8922193657,
+      "kappa_q1": 5.7162069274,
+      "kappa_q3": 6.0392794738,
+      "theta_median": 0.1474944042,
+      "theta_q1": 0.121444894,
+      "theta_q3": 0.17861508,
+      "n": 200,
+      "frac_of_ceiling": 0.093897854,
+      "saturated": false
+    },
+    {
+      "delta_f": 0.01,
+      "kappa_median": 59.3124853804,
+      "kappa_q1": 57.9268902262,
+      "kappa_q3": 60.3547158224,
+      "theta_median": 0.6389229768,
+      "theta_q1": 0.3411108779,
+      "theta_q3": 0.9132406737,
+      "n": 200,
+      "frac_of_ceiling": 0.4067510001,
+      "saturated": false
+    },
+    {
+      "delta_f": 0.001,
+      "kappa_median": 590.2930735976,
+      "kappa_q1": 579.3009963036,
+      "kappa_q3": 601.4138620922,
+      "theta_median": 1.3543387753,
+      "theta_q1": 1.1873199421,
+      "theta_q3": 1.5617683089,
+      "n": 200,
+      "frac_of_ceiling": 0.8621988428,
+      "saturated": false
+    },
+    {
+      "delta_f": 0.0001,
+      "kappa_median": 5912.9733060223,
+      "kappa_q1": 5793.1462279392,
+      "kappa_q3": 6040.063819252,
+      "theta_median": 1.5208803131,
+      "theta_q1": 1.3390072189,
+      "theta_q3": 1.7216407816,
+      "n": 200,
+      "frac_of_ceiling": 0.9682224787,
+      "saturated": true
+    }
+  ],
+  "saturation_onset_kappa_median": 5912.973306022332,
+  "saturation_onset_delta": 0.0001,
+  "saturating_fits": {
+    "capped_min": {
+      "A": 0.11324016764041259,
+      "b": 0.38955832493170384,
+      "rmse": 0.26265458465547514
+    },
+    "smooth_tanh": {
+      "A": 0.08052146512955533,
+      "b": 0.5095963457754155,
+      "rmse": 0.25720403403536457
+    },
+    "capped_min_on_level_medians": {
+      "A": 0.10617781325417558,
+      "b": 0.40122293942561665
+    },
+    "smooth_tanh_on_level_medians": {
+      "A": 0.07348964468984873,
+      "b": 0.5276020187603718
+    }
+  },
+  "loglog_slopes_by_cutoff": {
+    "lowest_2_levels (deltas 1, 0.1)": 0.35709827478320116,
+    "lowest_3_levels (deltas 1, 0.1, 0.01)": 0.5990042252611234,
+    "lowest_4_levels (deltas 1, 0.1, 0.01, 0.001)": 0.48815015661344796,
+    "lowest_5_levels (deltas 1, 0.1, 0.01, 0.001, 0.0001)": 0.3651428433160448
+  },
+  "presaturation_slope_range": [
+    0.35709827478320116,
+    0.5990042252611234
+  ],
+  "original_reported_slope": 0.363
+}

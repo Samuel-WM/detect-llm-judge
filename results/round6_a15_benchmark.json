@@ -1,0 +1,18 @@
+{
+ "benchmark_s": 75.98540091514587,
+ "n_probes_benchmark": 50,
+ "s_per_probe": 1.5197080183029175,
+ "projected_full_s": 14005.629096679686,
+ "projected_full_min": 233.4271516113281,
+ "checkpoints_selected": [
+  51,
+  136,
+  272
+ ],
+ "reason": "the 50-probe benchmark is biased upward by model-load and sparsely-filled fixed_bin batches amortized over 50 rows; a direct 512-probe measurement on the identical path is the accurate estimator of the same quantity, and was taken before any A2/A3 statistic was observed",
+ "reconstruction_max_abs_err": 1.4210854715202004e-14,
+ "fullscale_512probe_s": 260.9328417778015,
+ "fullscale_s_per_probe": 0.5096344565972686,
+ "fullscale_projected_full_min": 78.27985253334046,
+ "round5_recorded_per_checkpoint_s": 167
+}

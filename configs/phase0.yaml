@@ -1,0 +1,16 @@
+# Phase 0: synthetic identifiability, CPU only. No language models.
+seed: 0
+
+n_responses: 20        # finite response set size per prompt, "n" in Section 5
+feature_dim: 4          # "d"
+n_judges: 5              # "M"
+n_prompts_analytic: 200  # number of synthetic prompts for the analytic exact-recovery check
+
+empirical:
+  N_values: [1000, 10000, 100000, 1000000]
+  n_replicates: 200
+  n_prompts: 50   # synthetic prompts per replicate for the empirical estimation case
+
+output:
+  results_path: results/phase0_synthetic.parquet
+  run_id_prefix: phase0

@@ -1,0 +1,140 @@
+{
+  "required_context": 640,
+  "vram_budget_gb": 3.5,
+  "provenance": {
+    "OpenAssistant/reward-model-deberta-v3-large-v2": [
+      "openai/summarize_from_feedback",
+      "openai/webgpt_comparisons",
+      "Dahoas/instruct-synthetic-prompt-responses",
+      "Anthropic/hh-rlhf"
+    ],
+    "internlm/internlm2-1_8b-reward": [
+      "InternLM internal RLHF preference data (arXiv 2403.17297)"
+    ],
+    "Ray2333/gpt2-large-helpful-reward_model": [
+      "Anthropic/hh-rlhf"
+    ],
+    "Ray2333/gpt2-large-harmless-reward_model": [
+      "Anthropic/hh-rlhf"
+    ]
+  },
+  "objective": {
+    "OpenAssistant/reward-model-deberta-v3-large-v2": "general preference (mixed corpora)",
+    "internlm/internlm2-1_8b-reward": "general preference (InternLM internal)",
+    "Ray2333/gpt2-large-helpful-reward_model": "helpfulness",
+    "Ray2333/gpt2-large-harmless-reward_model": "harmlessness"
+  },
+  "results": [
+    {
+      "repo": "OpenAssistant/reward-model-deberta-v3-large-v2",
+      "gated": false,
+      "pipeline_tag": "text-classification",
+      "architectures": [
+        "DebertaV2ForSequenceClassification"
+      ],
+      "model_type": "deberta-v2",
+      "num_labels": null,
+      "id2label_size": 1,
+      "config_context": 512,
+      "hidden_size": 1024,
+      "num_layers": 24,
+      "tokenizer_model_max_length": 1000000000000000019884624838656,
+      "stored_size_bytes": 1740392185,
+      "stored_size_gb": 1.621,
+      "tokenizer_context": null,
+      "effective_context": 512,
+      "context_ok": false,
+      "scalar_head_from_arch": true,
+      "size_gb": 1.621,
+      "size_ok": true,
+      "all_ok": false,
+      "training_corpora": [
+        "openai/summarize_from_feedback",
+        "openai/webgpt_comparisons",
+        "Dahoas/instruct-synthetic-prompt-responses",
+        "Anthropic/hh-rlhf"
+      ]
+    },
+    {
+      "repo": "internlm/internlm2-1_8b-reward",
+      "gated": false,
+      "pipeline_tag": "text-classification",
+      "architectures": [
+        "InternLM2ForRewardModel"
+      ],
+      "model_type": "internlm2",
+      "num_labels": null,
+      "id2label_size": null,
+      "config_context": 32768,
+      "hidden_size": 2048,
+      "num_layers": 24,
+      "tokenizer_model_max_length": 1000000000000000019884624838656,
+      "stored_size_bytes": 3399163904,
+      "stored_size_gb": 3.166,
+      "tokenizer_context": null,
+      "effective_context": 32768,
+      "context_ok": true,
+      "scalar_head_from_arch": true,
+      "size_gb": 3.166,
+      "size_ok": true,
+      "all_ok": true,
+      "training_corpora": [
+        "InternLM internal RLHF preference data (arXiv 2403.17297)"
+      ]
+    },
+    {
+      "repo": "Ray2333/gpt2-large-helpful-reward_model",
+      "gated": false,
+      "pipeline_tag": "text-classification",
+      "architectures": [
+        "GPT2ForSequenceClassification"
+      ],
+      "model_type": "gpt2",
+      "num_labels": null,
+      "id2label_size": 1,
+      "config_context": 1024,
+      "hidden_size": 1280,
+      "num_layers": 36,
+      "tokenizer_model_max_length": 1024,
+      "stored_size_bytes": 3096171120,
+      "stored_size_gb": 2.884,
+      "tokenizer_context": 1024,
+      "effective_context": 1024,
+      "context_ok": true,
+      "scalar_head_from_arch": true,
+      "size_gb": 2.884,
+      "size_ok": true,
+      "all_ok": true,
+      "training_corpora": [
+        "Anthropic/hh-rlhf"
+      ]
+    },
+    {
+      "repo": "Ray2333/gpt2-large-harmless-reward_model",
+      "gated": false,
+      "pipeline_tag": "text-classification",
+      "architectures": [
+        "GPT2ForSequenceClassification"
+      ],
+      "model_type": "gpt2",
+      "num_labels": null,
+      "id2label_size": 1,
+      "config_context": 1024,
+      "hidden_size": 1280,
+      "num_layers": 36,
+      "tokenizer_model_max_length": 1024,
+      "stored_size_bytes": 3096171120,
+      "stored_size_gb": 2.884,
+      "tokenizer_context": 1024,
+      "effective_context": 1024,
+      "context_ok": true,
+      "scalar_head_from_arch": true,
+      "size_gb": 2.884,
+      "size_ok": true,
+      "all_ok": true,
+      "training_corpora": [
+        "Anthropic/hh-rlhf"
+      ]
+    }
+  ]
+}

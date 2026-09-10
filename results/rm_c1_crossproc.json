@@ -1,0 +1,44 @@
+{
+ "OA-deberta": {
+  "model": "OpenAssistant/reward-model-deberta-v3-large-v2",
+  "n": 487,
+  "pids": [
+   22188,
+   4468
+  ],
+  "frac_bitwise_equal": 1.0,
+  "max_abs_diff": 0.0,
+  "median_abs_diff": 0.0,
+  "median_diff_over_margin_sd": 0.0,
+  "pearson_between_processes": 1.0,
+  "C1_cross_process_pass": true
+ },
+ "gpt2-helpful": {
+  "model": "Ray2333/gpt2-large-helpful-reward_model",
+  "n": 487,
+  "pids": [
+   42056,
+   3396
+  ],
+  "frac_bitwise_equal": 1.0,
+  "max_abs_diff": 0.0,
+  "median_abs_diff": 0.0,
+  "median_diff_over_margin_sd": 0.0,
+  "pearson_between_processes": 1.0,
+  "C1_cross_process_pass": true
+ },
+ "gpt2-harmless": {
+  "model": "Ray2333/gpt2-large-harmless-reward_model",
+  "n": 487,
+  "pids": [
+   45648,
+   31964
+  ],
+  "frac_bitwise_equal": 1.0,
+  "max_abs_diff": 0.0,
+  "median_abs_diff": 0.0,
+  "median_diff_over_margin_sd": 0.0,
+  "pearson_between_processes": 1.0,
+  "C1_cross_process_pass": true
+ }
+}

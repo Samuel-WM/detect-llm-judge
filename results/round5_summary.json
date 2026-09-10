@@ -1,0 +1,55 @@
+{
+ "S": [
+  "OA-deberta",
+  "gpt2-helpful",
+  "gpt2-harmless"
+ ],
+ "M": 3,
+ "required_successes": 2,
+ "successes": 1,
+ "kill_criterion_fired": true,
+ "aggregate_claim_holds": false,
+ "rows": [
+  {
+   "true teacher": "OA-deberta",
+   "raw top-1": "gpt2-harmless",
+   "raw S_obs": -0.6296,
+   "raw p_perm": "0.56594",
+   "raw boot top-1": 0.28,
+   "raw verdict": "FAIL",
+   "resid top-1": "OA-deberta",
+   "resid S_obs": 0.7491,
+   "resid p_perm": "0.05209",
+   "resid boot top-1": 0.6346,
+   "resid verdict": "FAIL"
+  },
+  {
+   "true teacher": "gpt2-helpful",
+   "raw top-1": "OA-deberta",
+   "raw S_obs": -1.2761,
+   "raw p_perm": "0.86601",
+   "raw boot top-1": 0.0842,
+   "raw verdict": "FAIL",
+   "resid top-1": "OA-deberta",
+   "resid S_obs": -1.141,
+   "resid p_perm": "0.83952",
+   "resid boot top-1": 0.1374,
+   "resid verdict": "FAIL"
+  },
+  {
+   "true teacher": "gpt2-harmless",
+   "raw top-1": "gpt2-harmless",
+   "raw S_obs": 3.2118,
+   "raw p_perm": "0.00080",
+   "raw boot top-1": 0.9968,
+   "raw verdict": "SUCCESS",
+   "resid top-1": "gpt2-harmless",
+   "resid S_obs": 0.4312,
+   "resid p_perm": "0.23898",
+   "resid boot top-1": 0.6708,
+   "resid verdict": "FAIL"
+  }
+ ],
+ "ctrl": null,
+ "deterministic_arm_triggered": false
+}

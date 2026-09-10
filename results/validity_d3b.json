@@ -1,0 +1,286 @@
+{
+  "n_pairs": 600,
+  "reworded_rule": [
+    [
+      "\\bdon't\\b",
+      "do not"
+    ],
+    [
+      "\\bDon't\\b",
+      "Do not"
+    ],
+    [
+      "\\bdoesn't\\b",
+      "does not"
+    ],
+    [
+      "\\bDoesn't\\b",
+      "Does not"
+    ],
+    [
+      "\\bdidn't\\b",
+      "did not"
+    ],
+    [
+      "\\bDidn't\\b",
+      "Did not"
+    ],
+    [
+      "\\bisn't\\b",
+      "is not"
+    ],
+    [
+      "\\bIsn't\\b",
+      "Is not"
+    ],
+    [
+      "\\baren't\\b",
+      "are not"
+    ],
+    [
+      "\\bAren't\\b",
+      "Are not"
+    ],
+    [
+      "\\bwasn't\\b",
+      "was not"
+    ],
+    [
+      "\\bWasn't\\b",
+      "Was not"
+    ],
+    [
+      "\\bweren't\\b",
+      "were not"
+    ],
+    [
+      "\\bWeren't\\b",
+      "Were not"
+    ],
+    [
+      "\\bwon't\\b",
+      "will not"
+    ],
+    [
+      "\\bWon't\\b",
+      "Will not"
+    ],
+    [
+      "\\bcan't\\b",
+      "cannot"
+    ],
+    [
+      "\\bCan't\\b",
+      "Cannot"
+    ],
+    [
+      "\\bcouldn't\\b",
+      "could not"
+    ],
+    [
+      "\\bCouldn't\\b",
+      "Could not"
+    ],
+    [
+      "\\bshouldn't\\b",
+      "should not"
+    ],
+    [
+      "\\bShouldn't\\b",
+      "Should not"
+    ],
+    [
+      "\\bwouldn't\\b",
+      "would not"
+    ],
+    [
+      "\\bWouldn't\\b",
+      "Would not"
+    ],
+    [
+      "\\bhaven't\\b",
+      "have not"
+    ],
+    [
+      "\\bHaven't\\b",
+      "Have not"
+    ],
+    [
+      "\\bhasn't\\b",
+      "has not"
+    ],
+    [
+      "\\bHasn't\\b",
+      "Has not"
+    ],
+    [
+      "\\bhadn't\\b",
+      "had not"
+    ],
+    [
+      "\\bHadn't\\b",
+      "Had not"
+    ],
+    [
+      "\\bI'm\\b",
+      "I am"
+    ],
+    [
+      "\\byou're\\b",
+      "you are"
+    ],
+    [
+      "\\bYou're\\b",
+      "You are"
+    ],
+    [
+      "\\bthey're\\b",
+      "they are"
+    ],
+    [
+      "\\bThey're\\b",
+      "They are"
+    ],
+    [
+      "\\bwe're\\b",
+      "we are"
+    ],
+    [
+      "\\bWe're\\b",
+      "We are"
+    ],
+    [
+      "\\bI've\\b",
+      "I have"
+    ],
+    [
+      "\\byou've\\b",
+      "you have"
+    ],
+    [
+      "\\bYou've\\b",
+      "You have"
+    ],
+    [
+      "\\bwe've\\b",
+      "we have"
+    ],
+    [
+      "\\bWe've\\b",
+      "We have"
+    ],
+    [
+      "\\bthey've\\b",
+      "they have"
+    ],
+    [
+      "\\bThey've\\b",
+      "They have"
+    ],
+    [
+      "\\be\\.g\\.",
+      "for example"
+    ],
+    [
+      "\\bi\\.e\\.",
+      "that is"
+    ]
+  ],
+  "results": [
+    {
+      "judge": "Qwen/Qwen2.5-1.5B-Instruct",
+      "whitespace": {
+        "n": 547,
+        "coverage": 0.9116666666666666,
+        "floor_m": 0.3003427796534903,
+        "signal_m": 0.9963313215184177,
+        "snr_m": 3.317314045864193,
+        "mean_null": 0.14659506466641506
+      },
+      "reworded": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "floor_m": 0.1372067195247788,
+        "signal_m": 0.9359295903021004,
+        "snr_m": 6.821310162823888,
+        "mean_null": -0.042187498230487105
+      }
+    },
+    {
+      "judge": "meta-llama/Llama-3.2-1B-Instruct",
+      "whitespace": {
+        "n": 547,
+        "coverage": 0.9116666666666666,
+        "floor_m": 0.22670567059342478,
+        "signal_m": 0.42461998186232086,
+        "snr_m": 1.8730011505704094,
+        "mean_null": 0.0037705687707259407
+      },
+      "reworded": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "floor_m": 0.06515831674149866,
+        "signal_m": 0.45459738609759415,
+        "snr_m": 6.976812920154301,
+        "mean_null": -0.0015625063329935073
+      }
+    },
+    {
+      "judge": "google/gemma-3-1b-it",
+      "whitespace": {
+        "n": 547,
+        "coverage": 0.9116666666666666,
+        "floor_m": 1.135244644961306,
+        "signal_m": 2.4527100456224358,
+        "snr_m": 2.16051232349661,
+        "mean_null": 0.31672760528227967
+      },
+      "reworded": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "floor_m": 0.5047405581146213,
+        "signal_m": 2.2044300201718685,
+        "snr_m": 4.367451722933004,
+        "mean_null": -0.009765625
+      }
+    },
+    {
+      "judge": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+      "whitespace": {
+        "n": 547,
+        "coverage": 0.9116666666666666,
+        "floor_m": 0.08409386046178745,
+        "signal_m": 0.23937916153378846,
+        "snr_m": 2.8465712029306016,
+        "mean_null": 0.02645109743697116
+      },
+      "reworded": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "floor_m": 0.044261451004493794,
+        "signal_m": 0.22143442208320985,
+        "snr_m": 5.00287308838402,
+        "mean_null": 0.004296877607703209
+      }
+    },
+    {
+      "judge": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "whitespace": {
+        "n": 544,
+        "coverage": 0.9066666666666666,
+        "floor_m": 0.1272569405279355,
+        "signal_m": 0.26513299131220686,
+        "snr_m": 2.0834462168607986,
+        "mean_null": 0.007072900147999034
+      },
+      "reworded": {
+        "n": 160,
+        "coverage": 0.26666666666666666,
+        "floor_m": 0.0409084050202757,
+        "signal_m": 0.2918633403575133,
+        "snr_m": 7.134556827939275,
+        "mean_null": 0.0010742157697677611
+      }
+    }
+  ]
+}

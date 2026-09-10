@@ -1,0 +1,100 @@
+B2: 497 contexts, full vocabulary, exact KL
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8393.99it/s]
+C:\Users\samue\OneDrive\Documents\Research\ethic_lab\project_exploration\detect_llm_judge\.venv\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+  RM_OA-deberta step   17: KL_bar = 0.00165  (32s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  36%|###5      | 104/290 [00:00<00:00, 1039.81it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 1542.56it/s]
+  RM_OA-deberta step   34: KL_bar = 0.01074  (28s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7828.62it/s]
+  RM_OA-deberta step   51: KL_bar = 0.04418  (24s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7065.83it/s]
+  RM_OA-deberta step   68: KL_bar = 0.09886  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5652.81it/s]
+  RM_OA-deberta step   85: KL_bar = 0.14307  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5913.19it/s]
+  RM_OA-deberta step  102: KL_bar = 0.16803  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7729.52it/s]
+  RM_OA-deberta step  119: KL_bar = 0.17836  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 4792.09it/s]
+  RM_OA-deberta step  136: KL_bar = 0.19263  (15s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 3615.80it/s]
+  RM_OA-deberta step  153: KL_bar = 0.20501  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7854.70it/s]
+  RM_OA-deberta step  170: KL_bar = 0.21603  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 11779.01it/s]
+  RM_OA-deberta step  187: KL_bar = 0.21868  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 12014.98it/s]
+  RM_OA-deberta step  204: KL_bar = 0.22222  (21s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6739.44it/s]
+  RM_OA-deberta step  221: KL_bar = 0.22411  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6897.86it/s]
+  RM_OA-deberta step  238: KL_bar = 0.22277  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6254.36it/s]
+  RM_OA-deberta step  255: KL_bar = 0.22309  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5333.67it/s]
+  RM_OA-deberta step  272: KL_bar = 0.22699  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7418.20it/s]
+  RM_gpt2-helpful step   17: KL_bar = 0.00286  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6233.59it/s]
+  RM_gpt2-helpful step   34: KL_bar = 0.01839  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 9643.91it/s]
+  RM_gpt2-helpful step   51: KL_bar = 0.06491  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5855.15it/s]
+  RM_gpt2-helpful step   68: KL_bar = 0.10700  (15s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 4135.04it/s]
+  RM_gpt2-helpful step   85: KL_bar = 0.16204  (15s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5305.12it/s]
+  RM_gpt2-helpful step  102: KL_bar = 0.18355  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5871.11it/s]
+  RM_gpt2-helpful step  119: KL_bar = 0.19364  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6299.03it/s]
+  RM_gpt2-helpful step  136: KL_bar = 0.20375  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5471.21it/s]
+  RM_gpt2-helpful step  153: KL_bar = 0.20972  (19s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 3425.64it/s]
+  RM_gpt2-helpful step  170: KL_bar = 0.21846  (20s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5239.18it/s]
+  RM_gpt2-helpful step  187: KL_bar = 0.22264  (25s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  52%|#####1    | 150/290 [00:00<00:00, 1487.10it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 2615.39it/s]
+  RM_gpt2-helpful step  204: KL_bar = 0.22520  (20s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6303.24it/s]
+  RM_gpt2-helpful step  221: KL_bar = 0.22755  (24s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8454.61it/s]
+  RM_gpt2-helpful step  238: KL_bar = 0.22863  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8077.43it/s]
+  RM_gpt2-helpful step  255: KL_bar = 0.23048  (15s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8048.57it/s]
+  RM_gpt2-helpful step  272: KL_bar = 0.22767  (13s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7956.90it/s]
+  RM_gpt2-harmless step   17: KL_bar = 0.00168  (15s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 9200.40it/s]
+  RM_gpt2-harmless step   34: KL_bar = 0.01048  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7525.42it/s]
+  RM_gpt2-harmless step   51: KL_bar = 0.04335  (14s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6897.47it/s]
+  RM_gpt2-harmless step   68: KL_bar = 0.09054  (13s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8781.66it/s]
+  RM_gpt2-harmless step   85: KL_bar = 0.15395  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8652.29it/s]
+  RM_gpt2-harmless step  102: KL_bar = 0.17238  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6596.43it/s]
+  RM_gpt2-harmless step  119: KL_bar = 0.19141  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 8519.28it/s]
+  RM_gpt2-harmless step  136: KL_bar = 0.19588  (15s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 9817.65it/s]
+  RM_gpt2-harmless step  153: KL_bar = 0.20799  (16s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7832.05it/s]
+  RM_gpt2-harmless step  170: KL_bar = 0.20978  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5522.50it/s]
+  RM_gpt2-harmless step  187: KL_bar = 0.21020  (18s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7524.25it/s]
+  RM_gpt2-harmless step  204: KL_bar = 0.21530  (21s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 5794.81it/s]
+  RM_gpt2-harmless step  221: KL_bar = 0.22209  (14s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 7244.78it/s]
+  RM_gpt2-harmless step  238: KL_bar = 0.21744  (14s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 6984.37it/s]
+  RM_gpt2-harmless step  255: KL_bar = 0.21748  (17s)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 11140.96it/s]
+  RM_gpt2-harmless step  272: KL_bar = 0.21702  (15s)
+B2 total 932s -> results/round6_b2_kl.csv
